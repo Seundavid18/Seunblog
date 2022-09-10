@@ -1,7 +1,6 @@
 import React from 'react'
 import './navbar.css'
 import { Link } from 'react-router-dom'
-import { BsSearch } from 'react-icons/bs'
 import { useContext } from 'react';
 import { Context } from '../../contextApi/Context';
 
