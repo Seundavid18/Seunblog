@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 const multer = require('multer')
 const path = require("path")
+const cors = require('cors')
 
 
 connectDB();
@@ -33,7 +34,7 @@ const userRouter = require("./src/routes/user")
 const postRouter = require("./src/routes/post")
 const catRouter = require("./src/routes/category")
 
-
+app.use(cors())
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/posts', postRouter);
