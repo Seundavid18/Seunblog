@@ -14,7 +14,9 @@ export default function Home() {
   useEffect(() =>{
     const fetchPosts = async () => {
       const res = await axiosInstance.get("/posts/" + search)
-      setPosts(res.data.data)
+      setPosts(res.data.data.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt)
+      }))
     } 
     fetchPosts()
   }, [setPosts, search])
