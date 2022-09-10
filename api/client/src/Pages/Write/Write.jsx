@@ -76,7 +76,6 @@ export default function Write() {
         <label className='cat text-secondary'> Select Category</label> 
         <br />
         <select name="Categories" className='catInput' onChange={handleCat}>
-          <option disabled>Select Categories---</option>
           <option value="Travel">Travel</option>
           <option value="Sports">Sports</option>
           <option value="Life">Life</option>
