@@ -14,13 +14,6 @@ app.use("/images", express.static(path.join(__dirname, "/images")))
 const PORT = process.env.PORT || 8000
 
 
-app.get('/', (req, res) => {
-    res.status(200).json({
-        success: true,
-        message: "Welcome to my crud api"
-    })
-})
-
 const storage = multer.diskStorage({
     destination:(req, file, cb) => {
         cb(null, "images")
