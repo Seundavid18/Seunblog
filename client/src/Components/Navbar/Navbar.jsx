@@ -7,7 +7,7 @@ import { Context } from '../../contextApi/Context';
 
 export default function Navbar() {
     const {user, dispatch} = useContext(Context)
-    const PF = "http://localhost:9000/images/"
+    const PF = "https://seunblog.herokuapp.com/images/"
 
     const handleLogout =() => {
         dispatch({type: "LOGOUT"})
