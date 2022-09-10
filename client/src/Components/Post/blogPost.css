@@ -1,0 +1,67 @@
+.postImg{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+.flex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .flex-box{
+    max-width: 450px;
+    height: auto;
+    padding: 12px 12px 10px 0px;
+  }
+
+  @media (max-width: 768px) {
+    .flex-box{
+      padding: 0;
+    }
+  }
+
+  .read-more{
+    color: blueviolet;
+    cursor: pointer;
+  }
+
+  .postcat{
+    font-family: 'Varela Round', sans-serif ;
+    font-size: 11px;
+    color: #be9656;
+    line-height: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    display: inline;
+  }
+
+  .postBody{
+    line-height: 25px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    color: #222;
+  }
+
+  .postTitle{
+    font-family: 'Lora', serif;
+    color: #5e5e5e;
+    cursor: pointer;
+  }
+
+  .postTitle:hover{
+    color: black;
+  }
+
+  .timeStamp{
+    font-style: italic;
+  }

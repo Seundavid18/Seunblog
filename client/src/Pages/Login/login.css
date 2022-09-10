@@ -1,0 +1,76 @@
+.login{
+    height: 100vh;
+    background-image: linear-gradient(rgb(255, 255, 255, 0.6), rgba(255,255,255, 0.6)), url(../../cube-4HUU2R.png);
+    background-size: contain;
+    display: flex;
+    align-items: center;
+}
+
+.errBox{
+    width: 300px;
+    height: 50px;
+    padding: 10px;
+    background: rgb(240, 199, 199);
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formTitle{
+    font-size: 50px;
+    align-self: center;
+}
+
+.loginForm{
+    display: flex;
+    flex-direction: column;
+}
+
+.loginForm > label{
+    font-size: 20px;
+    font-family: 'Lora', serif;
+    font-weight: bold;
+}
+
+.formInput{
+    border: none;
+    border-bottom: 1px solid gray;
+    background: none;
+}
+
+.formInput:focus{
+    border-bottom: 1px solid teal;
+    outline: none;
+}
+
+.loginButton{
+    width: 110px;
+    padding: 10px 5px;
+    border: none;
+    border-radius: 20px;
+    background-color: teal;
+    color: white;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.loginButton:disabled{
+    cursor: not-allowed;
+    background-color: rgb(211, 211, 211);
+    color: rgb(134, 134, 134);
+}
+
+.regBtn{
+    border: none;
+    background: none;
+    color: teal;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.regBtn:hover{
+    color: teal;
+    text-decoration: underline;
+}

@@ -1,0 +1,71 @@
+.register{
+    height: 100vh;
+    background-image: linear-gradient(rgb(255, 255, 255, 0.4), rgba(255,255,255, 0.4)), url(../../conceptual-interior-room-3d-illustration-ZW5LHF4-1024x1024.jpg);
+    background-size: cover;
+    background-position: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.errBox{
+    width: 300px;
+    height: 50px;
+    padding: 10px;
+    background: rgb(240, 199, 199);
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formTitle{
+    font-size: 50px;
+    align-self: center;
+}
+
+.registerForm{
+    display: flex;
+    flex-direction: column;
+}
+
+.registerForm > label{
+    font-size: 20px;
+    font-family: 'Lora', serif;
+    font-weight: bold;
+}
+
+.formInput{
+    border: none;
+    border-bottom: 1px solid gray;
+    background: none;
+}
+
+.formInput:focus{
+    border-bottom: 1px solid teal;
+    outline: none;
+}
+
+.registerButton{
+    width: 110px;
+    padding: 10px 5px;
+    border: none;
+    border-radius: 20px;
+    background-color: teal;
+    color: white;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.logBtn{
+    border: none;
+    background: none;
+    color: teal;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.logBtn:hover{
+    color: teal;
+    text-decoration: underline;
+}

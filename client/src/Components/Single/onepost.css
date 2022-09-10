@@ -1,0 +1,91 @@
+.home-container{
+    position: relative;
+    width: 93%;
+    margin: auto;
+}
+
+@media(max-width: 768px){
+    .home-container{
+        position: relative;
+        max-width: 95%;
+    }
+}
+
+.onePostImg{
+    width: 100%;
+    height: 350px;
+    background-size: cover;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+.onePostTitle{
+    margin-top: 10px;
+    font-size: 25px;
+    font-family: 'Lora', serif;
+}
+
+.onePostTitleInput{
+    margin-top: 10px;
+    font-size: 25px;
+    font-family: 'Lora', serif;
+    text-align: center;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid lightgrey;
+    color: gray;
+}
+
+.onePostTitleInput:focus{
+    outline: none;
+}
+
+.onePostEdit{
+    float: right;
+    font-size: 18px;
+}
+
+.onePostIcon{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.onePostIcon:disabled{
+    cursor: not-allowed;
+    background-color: rgb(211, 211, 211);
+    color: rgb(134, 134, 134);
+}
+
+.onePostInfo{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.onePostDescInput{
+    border: none;
+    color: gray;
+    width: 100%;
+}
+
+.onePostDescInput:focus{
+    outline: none;
+}
+
+.updateButton{
+    width: 120px;
+    border: none;
+    background-color: teal;
+    border-radius: 20px;
+    margin-top: 20px;
+    float: right;
+    align-self: flex-end;
+    color: #fff;
+    padding: 7px;
+    cursor: pointer;
+}
+
+.onePostAuthor{
+    text-transform: capitalize;
+}

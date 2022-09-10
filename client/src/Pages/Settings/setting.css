@@ -1,0 +1,12 @@
+.home-container{
+    position: relative;
+    width: 93%;
+    margin: auto;
+}
+
+@media(max-width: 768px){
+    .home-container{
+        position: relative;
+        max-width: 95%;
+    }
+}

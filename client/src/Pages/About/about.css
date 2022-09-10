@@ -1,0 +1,11 @@
+.imgBox{
+    width: 500px;
+    height: 350px;
+    background-size: cover;
+    object-fit: cover;
+}
+
+.fullname{
+    font-family: 'Lora', serif;
+    color: #5e5e5e;
+}
