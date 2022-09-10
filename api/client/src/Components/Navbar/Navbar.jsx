@@ -39,27 +39,29 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav ms-auto">
-                        {
-                            user ? (
-                                <Link to="/settings">
-                                    <img className="nav-item nav-dp" src={PF + user.profilePicture} alt=""/>
-                                </Link>
-                            ) : (
-                                <div className='d-lg-flex'>
-                                    <li className="nav-item">
-                                        <Link className="nav-link link" to="/login">LOGIN</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link link" to="/register">REGISTER</Link>
-                                    </li>
-                                </div>
-                            )
-                        }
-                        
-                    </ul>
+                    
                 </div>
-                <li><BsSearch className="ms-lg-4 pt-1" style={{cursor: "pointer"}} color='#e9e9e9' size={22}/></li>
+                <div>
+                    <ul className="navbar-nav ms-auto">
+                            {
+                                user ? (
+                                    <Link to="/settings">
+                                        <img className="nav-item nav-dp" src={PF + user.profilePicture} alt=""/>
+                                    </Link>
+                                ) : (
+                                    <div className='d-lg-flex'>
+                                        <li className="nav-item">
+                                            <Link className="nav-link link" to="/login">LOGIN</Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link className="nav-link link" to="/register">REGISTER</Link>
+                                        </li>
+                                    </div>
+                                )
+                            }
+                            
+                        </ul>
+                </div>
             </div>
         </nav>
         

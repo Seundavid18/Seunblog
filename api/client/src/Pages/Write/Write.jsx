@@ -76,13 +76,14 @@ export default function Write() {
         <label className='cat text-secondary'> Select Category</label> 
         <br />
         <select name="Categories" className='catInput' onChange={handleCat}>
-          <option value="Travel">Travel</option>
-          <option value="Sports">Sports</option>
-          <option value="Life">Life</option>
-          <option value="Games">Games</option>
-          <option value="Tech">Tech</option>
-          <option value="Music">Music</option>
-          <option value="Love">Love</option>
+          <option></option>
+          <option value="Travel" className='link'>Travel</option>
+          <option value="Sports" className='link'>Sports</option>
+          <option value="Life" className='link'>Life</option>
+          <option value="Games" className='link'>Games</option>
+          <option value="Tech" className='link'>Tech</option>
+          <option value="Music" className='link'>Music</option>
+          <option value="Love" className='link'>Love</option>
         </select>
         {showOption &&
           <input type="text" className='writeInput' autoFocus={true} disabled value={categories} onChange={handleCat}/>
