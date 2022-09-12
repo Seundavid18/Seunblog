@@ -17,7 +17,7 @@ export default function OnePost() {
     const [update, setUpdate] = useState(false)
     const [loading, setLoading] = useState(false)
     const { user } = useContext(Context)
-    const PF = "https://seunblog.herokuapp.com/images/"
+    const PF = "https://seundavidblog.herokuapp.com/images/"
 
     useEffect(() => {
         const getPost = async () => {

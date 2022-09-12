@@ -13,7 +13,7 @@ import { axiosInstance } from '../../utils'
 export default function Sidebar() {
   const [cats, setCats] = useState([])
   const {user} = useContext(Context)
-  const PF = "https://seunblog.herokuapp.com/images/"
+  const PF = "https://seundavidblog.herokuapp.com/images/"
 
   useEffect(()=>{
     const getCat = async () => {

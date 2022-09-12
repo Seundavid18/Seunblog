@@ -4,7 +4,7 @@ import { Context } from '../../contextApi/Context'
 
 export default function About() {
     const {user} = useContext(Context)
-    const PF = "https://seunblog.herokuapp.com/images/"
+    const PF = "https://seundavidblog.herokuapp.com/images/"
   return (
     <div className='container'>
         <div className='mt-3'>
