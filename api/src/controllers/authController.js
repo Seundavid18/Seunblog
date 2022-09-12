@@ -58,7 +58,7 @@ const login = async (req, res, next) => {
     if(!user){
         return res.status(200).json({
             success: false,
-            message:"Incorrect username or password"
+            message:"User does not exist"
         })
     }
 
