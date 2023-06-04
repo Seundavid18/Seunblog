@@ -66,6 +66,8 @@ export const FooterColumn = styled.div`
 
 export const FooterForm = styled.div`
     width: 100%;
+
+    
 `
 export const FooterButton = styled.div`
     position: absolute;

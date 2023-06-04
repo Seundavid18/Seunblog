@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom'
 
 export default function BlogPost({ post }) {
 
-    const PF = "https://seundavidblog.herokuapp.com/images/"
+    //const PF = "https://seundavidblog.herokuapp.com/images/"
+    const PF = "http://localhost:9000/images/"
   return (
     <div className='blogpost'>
             <div className="flex-box">
