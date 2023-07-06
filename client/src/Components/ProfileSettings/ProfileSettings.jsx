@@ -13,8 +13,8 @@ export default function ProfileSettings() {
   const [about, setAbout] = useState("")
   // const [password, setPassword] = useState("")
   const [success, setSuccess] = useState(false)
-  //const PF = "https://seundavidblog.herokuapp.com/images/"
-  const PF = "http://localhost:9000/images/"
+  const PF = "https://seunblogapp.azurewebsites.net/images/"
+  //const PF = "http://localhost:9000/images/"
 
   const handleFile = (e) => {
     setFile(e.target.files[0])
