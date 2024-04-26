@@ -25,15 +25,21 @@ steps:
     command: 'install'
     workingDir: 'server'
 - task: Npm@1
+  displayName: 'npm run build'
   inputs:
     command: 'custom'
     workingDir: 'client'
     customCommand: 'run build'
 - task: CopyFiles@2
+  displayName: 'Copy files'
   inputs:
-    targetFolder: '$(Build.ArtifactStagingDirectory)'
+    Contents: |
+      client/build/**
+      server/**
+    TargetFolder: $(Build.ArtifactStagingDirectory)
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifacts'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
+    ArtifactName: 'release'
     publishLocation: 'Container'
