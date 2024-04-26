@@ -42,7 +42,7 @@ function Footer() {
               </LinkWrapper>
             </Paragraph>
            </FooterColumn>
-           <FooterColumn>
+           {/* <FooterColumn>
             <Paragraph>Stay in the loop with us</Paragraph>
             <FooterForm >
               <Input placeholder="Enter Email Address" style={{width: '100%', boxSizing:'border-box', position: 'relative'}} />
@@ -50,7 +50,7 @@ function Footer() {
                 <Button>Submit</Button>
               </FooterButton>
             </FooterForm>
-           </FooterColumn>
+           </FooterColumn> */}
           </FooterItem>
         </Wrapper>
         <br />

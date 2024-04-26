@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom'
 
 export default function BlogPost({ post }) {
 
-    const PF = "https://seunblogapp.azurewebsites.net/images/"
-    //const PF = "http://localhost:9000/images/"
+    //const PF = "https://seunblogapp.azurewebsites.net/images/"
+    const PF = "http://localhost:9000/images/"
   return (
     <div className='blogpost'>
             <div className="flex-box">
