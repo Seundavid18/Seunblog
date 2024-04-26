@@ -12,7 +12,7 @@ connectDB();
 app.use(express.json())
 app.use("/images", express.static(path.join(__dirname, "/images")))
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8080
 
 
 const storage = multer.diskStorage({
@@ -46,7 +46,7 @@ app.use('/api/categories', catRouter)
 //     res.sendFile(path.join(__dirname, "/client/build", "index.html"))
 // })
 
-app.use(express.static("/client/build"))
+app.use(express.static("../client/build"))
 
 app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
