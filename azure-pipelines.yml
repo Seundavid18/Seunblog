@@ -15,11 +15,6 @@ steps:
     versionSpec: '20.x'
   displayName: 'Install Node.js'
 - task: Npm@1
-  displayName: 'Install Express'
-  inputs:
-    command: 'custom'
-    customCommand: 'install --save express'
-- task: Npm@1
   displayName: 'Install NPM in Client'
   inputs:
     command: 'install'
@@ -41,7 +36,6 @@ steps:
     Contents: |
       client/build/**
       server/**
-      index.js
     TargetFolder: $(Build.ArtifactStagingDirectory)
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifacts'
