@@ -15,6 +15,10 @@ steps:
     versionSpec: '20.x'
   displayName: 'Install Node.js'
 - task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'install --save express'
+- task: Npm@1
   displayName: 'Install NPM in Client'
   inputs:
     command: 'install'
