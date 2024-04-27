@@ -6,7 +6,7 @@ import { Context } from '../../contextApi/Context';
 
 export default function Navbar() {
     const {user, dispatch} = useContext(Context)
-    const PF = "https://seunblog.azurewebsites.net/images/"
+    const PF = "https://seundavidblog.azurewebsites.net/images/"
     //const PF = "http://localhost:9000/images/"
 
     const handleLogout =() => {

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 export default function BlogPost({ post }) {
 
-    const PF = "https://seunblog.azurewebsites.net/images/"
+    const PF = "https://seundavidblog.azurewebsites.net/images/"
     //const PF = "http://localhost:9000/images/"
   return (
     <div className='blogpost'>

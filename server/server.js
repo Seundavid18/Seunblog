@@ -12,7 +12,7 @@ connectDB();
 app.use(express.json())
 app.use("/images", express.static(path.join(__dirname, "/images")))
 
-const PORT = 8080
+const PORT = process.env.PORT || 8080
 
 
 const storage = multer.diskStorage({
@@ -46,19 +46,19 @@ app.use('/api/categories', catRouter)
 //     res.sendFile(path.join(__dirname, "/client/build", "index.html"))
 // })
 
-// app.use(express.static("../client/build"))
+app.use(express.static("../client/build"))
 
-// app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
-// })
-
-const buildPath = path.join(__dirname, '../client/build')
-
-app.use(express.static(buildPath))
-
-app.get("/*", (req, res) => {
-    res.sendFile('index.html', { root : buildPath })
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
 })
+
+// const buildPath = path.join(__dirname, '../client/build')
+
+// app.use(express.static(buildPath))
+
+// app.get("/*", (req, res) => {
+//     res.sendFile('index.html', { root : buildPath })
+// })
 
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`)
