@@ -4,7 +4,7 @@ import { Context } from '../../contextApi/Context'
 
 export default function About() {
     const {user} = useContext(Context)
-    const PF = "https://seunblogapp.azurewebsites.net/images/"
+    const PF = "https://seunblog.azurewebsites.net/images/"
     //const PF = "http://localhost:9000/images/"
   return (
     <div className='container'>

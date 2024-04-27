@@ -13,7 +13,7 @@ export default function ProfileSettings() {
   const [about, setAbout] = useState("")
   // const [password, setPassword] = useState("")
   const [success, setSuccess] = useState(false)
-  const PF = "https://seunblogapp.azurewebsites.net/images/"
+  const PF = "https://seunblog.azurewebsites.net/images/"
   //const PF = "http://localhost:9000/images/"
 
   const handleFile = (e) => {

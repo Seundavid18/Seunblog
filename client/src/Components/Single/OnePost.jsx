@@ -17,7 +17,7 @@ export default function OnePost() {
     const [update, setUpdate] = useState(false)
     const [loading, setLoading] = useState(false)
     const { user } = useContext(Context)
-    const PF = "https://seunblogapp.azurewebsites.net/images/"
+    const PF = "https://seunblog.azurewebsites.net/images/"
     //const PF = "http://localhost:9000/images/"
 
     useEffect(() => {
