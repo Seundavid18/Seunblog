@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const connectDB = require('../config/Config')
+const connectDB = require('../server/config/Config')
 const dotenv = require('dotenv')
 dotenv.config()
 const multer = require('multer')
@@ -12,7 +12,7 @@ connectDB();
 app.use(express.json())
 app.use("/images", express.static(path.join(__dirname, "/images")))
 
-const PORT = process.env.PORT
+const PORT = 8080
 
 
 const storage = multer.diskStorage({
@@ -29,10 +29,10 @@ app.post('/api/upload', upload.single("file"), (req, res) => {
     res.status(200).json('File has been uploaded')
 })
 
-const authRouter = require("../src/routes/auth");
-const userRouter = require("../src/routes/user")
-const postRouter = require("../src/routes/post")
-const catRouter = require("../src/routes/category")
+const authRouter = require("../server/src/routes/auth");
+const userRouter = require("../server/src/routes/user")
+const postRouter = require("../server/src/routes/post")
+const catRouter = require("../server/src/routes/category")
 
 app.use(cors())
 app.use('/api/auth', authRouter);
