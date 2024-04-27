@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const connectDB = require('./config/Config')
+const connectDB = require('../config/Config')
 const dotenv = require('dotenv')
 dotenv.config()
 const multer = require('multer')
@@ -29,10 +29,10 @@ app.post('/api/upload', upload.single("file"), (req, res) => {
     res.status(200).json('File has been uploaded')
 })
 
-const authRouter = require("./src/routes/auth");
-const userRouter = require("./src/routes/user")
-const postRouter = require("./src/routes/post")
-const catRouter = require("./src/routes/category")
+const authRouter = require("../src/routes/auth");
+const userRouter = require("../src/routes/user")
+const postRouter = require("../src/routes/post")
+const catRouter = require("../src/routes/category")
 
 app.use(cors())
 app.use('/api/auth', authRouter);
@@ -46,7 +46,7 @@ app.use('/api/categories', catRouter)
 //     res.sendFile(path.join(__dirname, "/client/build", "index.html"))
 // })
 
-app.use(express.static("./client/build"))
+app.use(express.static("../client/build"))
 
 app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
