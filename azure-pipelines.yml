@@ -12,16 +12,18 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '18.x'
+    versionSpec: '20.x'
   displayName: 'Install Node.js'
-- task: Npm@1
-  inputs:
-    command: 'install'
 - task: Npm@1
   displayName: 'Install NPM in Client'
   inputs:
     command: 'install'
     workingDir: 'client'
+- task: Npm@1
+  displayName: 'Install NPM in Server'
+  inputs:
+    command: 'install'
+    workingDir: 'server'
 - task: Npm@1
   displayName: 'npm run build'
   inputs:
