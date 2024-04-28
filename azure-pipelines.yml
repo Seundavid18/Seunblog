@@ -15,28 +15,28 @@ steps:
     versionSpec: '20.x'
   displayName: 'Install Node.js'
 - task: Npm@1
-  displayName: 'Install NPM in Server'
+  displayName: 'Install NPM In Server'
   inputs:
     command: 'install'
 - task: Npm@1
-  displayName: 'Install NPM in Client'
+  displayName: 'Install NPM In Client'
   inputs:
     command: 'install'
     workingDir: 'client'
 - task: Npm@1
-  displayName: 'npm run build'
+  displayName: 'Npm Run Build'
   inputs:
     command: 'custom'
     workingDir: 'client'
     customCommand: 'run build'
 - task: CopyFiles@2
-  displayName: 'Copy Client files'
+  displayName: 'Copy Client Files'
   inputs:
     Contents: |
       client/build/**
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: CopyFiles@2
-  displayName: 'Copy Server files'
+  displayName: 'Copy Server Files'
   inputs:
     Contents: |
       **
