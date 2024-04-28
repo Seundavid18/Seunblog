@@ -11,6 +11,8 @@ export default function Register() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [errorMsg, setErrorMsg] = useState("")
+  const [loading, setLoading] = useState(false)
+
 
   const handleFullname = (e) => {
     setFullName(e.target.value)
@@ -37,6 +39,7 @@ export default function Register() {
         email: `${email}`,
         password: `${password}`
     }
+    setLoading(true)
     axiosInstance.post('/auth/register', signin)
     .then(response => {
       if (response.data.success === true) {
@@ -44,6 +47,7 @@ export default function Register() {
       } else {
         setErrorMsg(response.data.message)
       }
+      setLoading(false)
     })
   };
   return ( 
@@ -105,7 +109,7 @@ export default function Register() {
                                     />
                                     </div>        
                                     <p className='text-center agree mt-3 mb-3'>By signing up you agree that your data will be stored in our database.</p>                           
-                                    <button type="submit" className='registerButton'>Register</button>
+                                    <button type="submit" className='registerButton' disabled={loading}>Register</button>
                                     <p className='text-center'>
                                       Have an account? 
                                       <button className='logBtn'>

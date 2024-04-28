@@ -57,6 +57,12 @@
     margin-top: 10px;
 }
 
+.registerButton:disabled{
+    cursor: not-allowed;
+    background-color: rgb(211, 211, 211);
+    color: rgb(134, 134, 134);
+}
+
 .logBtn{
     border: none;
     background: none;
