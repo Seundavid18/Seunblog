@@ -30,17 +30,17 @@ steps:
     workingDir: 'client'
     customCommand: 'run build'
 - task: CopyFiles@2
-  displayName: 'Copy files'
+  displayName: 'Copy Client files'
   inputs:
     Contents: |
       client/build/**
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: CopyFiles@2
-  displayName: 'Copy files'
+  displayName: 'Copy Server files'
   inputs:
     Contents: |
-      **\**
-      !**\client\**
+      **
+      !client/**
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifacts'
