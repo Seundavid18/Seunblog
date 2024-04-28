@@ -103,7 +103,8 @@ export default function Register() {
                                     required
                                     onChange={handlePassword}
                                     />
-                                    </div>                                   
+                                    </div>        
+                                    <p className='text-center agree mt-3 mb-3'>By signing up you agree that your data will be stored in our database.</p>                           
                                     <button type="submit" className='registerButton'>Register</button>
                                     <p className='text-center'>
                                       Have an account? 
