@@ -18,6 +18,7 @@ steps:
   displayName: 'Install NPM In Server'
   inputs:
     command: 'install'
+    workingDir: 'server'
 - task: Npm@1
   displayName: 'Install NPM In Client'
   inputs:
@@ -34,14 +35,7 @@ steps:
   inputs:
     Contents: |
       client/build/**
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-- task: CopyFiles@2
-  displayName: 'Copy Server Files'
-  inputs:
-    Contents: |
-      **
-      !.git/**
-      !client/**
+      server/**
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifacts'
