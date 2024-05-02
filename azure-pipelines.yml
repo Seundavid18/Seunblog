@@ -15,15 +15,15 @@ steps:
     versionSpec: '20.x'
   displayName: 'Install Node.js'
 - task: Npm@1
-  displayName: 'Install NPM In Server'
-  inputs:
-    command: 'install'
-    workingDir: 'server'
-- task: Npm@1
   displayName: 'Install NPM In Client'
   inputs:
     command: 'install'
     workingDir: 'client'
+- task: Npm@1
+  displayName: 'Install NPM In Server'
+  inputs:
+    command: 'install'
+    workingDir: 'server'
 - task: Npm@1
   displayName: 'Npm Run Build'
   inputs:
