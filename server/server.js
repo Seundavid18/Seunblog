@@ -10,14 +10,14 @@ const cors = require('cors')
 
 connectDB();
 app.use(express.json())
-app.use("/images", express.static(path.join(__dirname, "/images")));
+app.use("./images", express.static(path.join(__dirname, "./images")));
 
 const PORT = process.env.PORT || 8080
 
 
 const storage = multer.diskStorage({
     destination:(req, file, cb) => {
-        cb(null, "images")
+        cb(null, "./images")
     }, 
     filename:(req, file, cb) => {
         cb(null, req.body.name)
