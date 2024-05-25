@@ -38,11 +38,11 @@ steps:
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'Sonarcloud'
-    organization: 'mini-bank-app'
+    organization: 'Seunblogp'
     scannerMode: 'CLI'
     configMode: 'manual'
-    cliProjectKey: 'mini-bank-app_mini-bank-app'
-    cliProjectName: 'mini-bank-app'
+    cliProjectKey: 'seunblog_seunblog'
+    cliProjectName: 'seunblog'
     cliSources: '.'
     extraProperties: |
       sonar.verbose=true
