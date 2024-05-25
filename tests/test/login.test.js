@@ -8,11 +8,15 @@ describe("Login test", function() {
 
         let driver = new Builder().forBrowser(Browser.CHROME).build();
 
-        // Navigate to the login page
-        driver.get('https://seundavidblog.azurewebsites.net/login');
+        // Navigate to the seundavidblog page
+        driver.get('https://seundavidblog.azurewebsites.net');
 
         // Maximize browser window
         driver.manage().window().maximize();
+
+        // Locate Login page by its text "LOGIN"
+        var nav_login = driver.findElement(By.xpath('//a[text()="LOGIN"]'));
+        nav_login.click();  
 
         // Locate and insert text into email field
         var username_input = driver.findElement(By.id('username'));
@@ -34,7 +38,7 @@ describe("Login test", function() {
         done();
 
         // Close the browser
-        driver.quit();
+        //driver.quit();
 
     }).timeout(10000);
 

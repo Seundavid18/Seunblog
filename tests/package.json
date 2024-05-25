@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=cobertura --reporter=html mocha './test/*.test.js' --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results.xml"
+    "test": "mocha './test/*.test.js'"
   },
   "keywords": [],
   "author": "",
