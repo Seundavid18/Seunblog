@@ -50,6 +50,7 @@ export default function Login() {
                                     <input 
                                     className="formInput mb-3" 
                                     type="text"   
+                                    id='username'
                                     placeholder="Enter your Username" 
                                     required
                                     ref={userRef}
@@ -61,6 +62,7 @@ export default function Login() {
                                     <input 
                                     className="formInput mb-3" 
                                     type="password"   
+                                    id='password'
                                     placeholder="Enter your password" 
                                     required
                                     ref={passwordRef}

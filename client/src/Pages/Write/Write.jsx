@@ -71,7 +71,7 @@ export default function Write() {
           <IoMdAdd className='writeIcon' size={25}/>
         </label>
         <input type="file" id="fileinput" style={{display:'none'}} onChange={handleFile}/>
-        <input type="text" placeholder='Title' className='writeInput' autoFocus={true} onChange={handleTitle}/>
+        <input type="text" placeholder='Title' className='writeInput' id='writeTitle' autoFocus={true} onChange={handleTitle}/>
         <br />
         <label className='cat text-secondary'> Select Category</label> 
         <br />
@@ -90,10 +90,10 @@ export default function Write() {
         }
         <br />
         <div className="writeFormGroup">
-          <textarea placeholder='Tell your story...' className='writeInput writeText' onChange={handleDesc} />
+          <textarea placeholder='Tell your story...' className='writeInput writeText' id='writeStory' onChange={handleDesc} />
         </div>
 
-        <button className="writeSubmit" type='submit' disabled={loading}>
+        <button className="writeSubmit" id='publishBtn' type='submit' disabled={loading}>
           Publish
         </button>
       </form>

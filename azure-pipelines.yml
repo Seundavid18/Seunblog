@@ -15,27 +15,56 @@ steps:
     versionSpec: '20.x'
   displayName: 'Install Node.js'
 - task: Npm@1
-  displayName: 'Install NPM In Client'
+  displayName: 'Install NPM in Client'
   inputs:
     command: 'install'
     workingDir: 'client'
 - task: Npm@1
-  displayName: 'Install NPM In Server'
+  displayName: 'Install NPM in Server'
   inputs:
     command: 'install'
     workingDir: 'server'
 - task: Npm@1
-  displayName: 'Npm Run Build'
+  displayName: 'Install NPM in Test'
+  inputs:
+    command: 'install'
+    workingDir: 'tests'
+- task: Npm@1
+  displayName: 'NPM Run Build'
   inputs:
     command: 'custom'
     workingDir: 'client'
     customCommand: 'run build'
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'Sonarcloud'
+    organization: 'mini-bank-app'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'mini-bank-app_mini-bank-app'
+    cliProjectName: 'mini-bank-app'
+    cliSources: '.'
+    extraProperties: |
+      sonar.verbose=true
+      sonar.javascript.lcov.reportPaths: '**/coverage/lcov.info'
+      sonar.exclusions=**/*.flow
+- task: SonarCloudAnalyze@1
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
 - task: CopyFiles@2
-  displayName: 'Copy Client Files'
+  displayName: 'Copy Client and Server Files'
   inputs:
     Contents: |
       client/build/**
       server/**
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+- task: CopyFiles@2
+  displayName: 'Copy Tests Files'
+  inputs:
+    Contents: |
+      tests/**
+      !tests/node_modules/**
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifacts'
@@ -43,3 +72,28 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'release'
     publishLocation: 'Container'
+- task: Npm@1
+  displayName: Unit tests
+  inputs:
+    command: 'custom'
+    workingDir: 'tests'
+    customCommand: 'run test'
+  condition: succeededOrFailed()
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/test-results.xml'
+    failTaskOnFailedTests: true
+  condition: succeededOrFailed()
+- task: Npm@1
+  displayName: 'NPM install NYC in Test'
+  inputs:
+    command: 'custom'
+    workingDir: 'tests'
+    customCommand: 'install --save-dev nyc'
+- task: PublishCodeCoverageResults@2
+  displayName: 'Build code coverage report'
+  inputs:
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml'
+

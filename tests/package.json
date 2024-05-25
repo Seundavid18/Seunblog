@@ -1,0 +1,20 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc --reporter=cobertura --reporter=html mocha './test/*.test.js' --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results.xml"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "chai": "^5.1.0",
+    "mocha": "^10.4.0",
+    "mocha-junit-reporter": "^2.2.1",
+    "nyc": "^15.1.0",
+    "selenium-webdriver": "^4.20.0"
+  }
+}
