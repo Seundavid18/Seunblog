@@ -20,11 +20,11 @@ describe("Login test", function() {
 
         // Locate and insert text into email field
         var username_input = driver.findElement(By.id('username'));
-        username_input.sendKeys('seundavid', Key.RETURN);
+        username_input.sendKeys('seundavid');
 
         // Locate and insert text into email field
         var password_input = driver.findElement(By.id('password'));
-        password_input.sendKeys('password', Key.RETURN);
+        password_input.sendKeys('password');
 
     
         // Locate button by its text "Sign In"
