@@ -9,7 +9,112 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+parameters:
+  - name: versioningScheme
+    type: string
+    default: "main-patch"
+    values:
+      - main-patch       # Increment patch version when merged to main
+      - release-patch    # Increment patch version when merged to release branch
+      - manual           # Manual major.minor.patch versioning
+
+variables:
+  MajorMinorVersion: "1.0"  # Manually set major.minor version
+  PatchVersion: "0"         # Default patch version
+
 steps:
+# Checkout repository with full history
+- checkout: self
+  fetchDepth: 0
+
+# Download and install GitVersion CLI
+- script: |
+    echo "Downloading GitVersion CLI..."
+    wget https://github.com/GitTools/GitVersion/releases/download/6.1.0/gitversion-linux-x64-6.1.0.tar.gz -O gitversion.tar.gz
+    mkdir gitversion
+    tar -xzf gitversion.tar.gz -C gitversion
+    export PATH="$PATH:$(pwd)/gitversion"
+    echo "##vso[task.prependpath]$(pwd)/gitversion"
+  displayName: "Install GitVersion CLI"
+
+# Run GitVersion and capture output
+- script: |
+    echo "Running GitVersion..."
+    ./gitversion/gitversion /output json /config gitversion.yml > gitversion_output.json
+    echo "GitVersion output saved."
+  displayName: "Run GitVersion"
+
+# Extract version from GitVersion
+- script: |
+    echo "Extracting version from GitVersion output..."
+    if [ -f gitversion_output.json ]; then
+        VERSION=$(cat gitversion_output.json | jq -r '.FullSemVer' || echo "")
+        if [ -z "$VERSION" ]; then
+            echo "Failed to extract version. Invalid or missing FullSemVer."
+            exit 1
+        fi
+        echo "Computed version: $VERSION"
+        echo "##vso[task.setvariable variable=GIT_FULL_VERSION]$VERSION"
+    else
+        echo "gitversion_output.json not found."
+        exit 1
+    fi
+  displayName: "Extract Version from GitVersion"
+
+# Apply Logic for Versioning
+- script: |
+    echo "Selected versioning scheme: ${{ parameters.versioningScheme }}"
+
+    # Start with the manually set Major.Minor version
+    majorMinor="${{ variables.MajorMinorVersion }}"
+    echo "Base Major.Minor version: $majorMinor"
+
+    # Extract patch version from GitVersion's FullSemVer
+    gitVersion=$(GIT_FULL_VERSION)
+    patch=$(echo "$gitVersion" | grep -oE '[0-9]+$')
+
+    # Increment patch based on branch and versioning scheme
+    if [ "${{ parameters.versioningScheme }}" == "main-patch" ] && [ "$BUILD_SOURCEBRANCHNAME" == "main" ]; then
+      echo "Incrementing patch version for main branch."
+      patch=$((patch + 1))
+    elif [ "${{ parameters.versioningScheme }}" == "release-patch" ] && [[ "$BUILD_SOURCEBRANCHNAME" =~ ^release.* ]]; then
+      echo "Incrementing patch version for release branch."
+      patch=$((patch + 1))
+    elif [ "${{ parameters.versioningScheme }}" == "manual" ]; then
+      echo "Using manual major.minor.patch versioning. No auto-increment."
+    else
+      echo "No patch increment applied."
+    fi
+
+    # Combine major.minor and updated patch
+    finalVersion="${majorMinor}.${patch}"
+    echo "Final computed version: $finalVersion"
+
+    # Export version as pipeline variable
+    echo "##vso[task.setvariable variable=FULL_VERSION]$finalVersion"
+  displayName: "Compute Version Based on Parameter"
+
+# Set Build Name with Commit Message and Full Version
+- script: |
+    echo "Updating pipeline name..."
+    
+    # Retrieve the latest commit message
+    commitMessage=$(git log -1 --pretty=%s | tr -d '\n' | tr -d '\r')
+    
+    # Sanitize the commit message
+    sanitizedCommitMessage=$(echo "$commitMessage" | sed 's/[^a-zA-Z0-9._-]/-/g')
+    
+    # Combine Build ID and Full Version (exclude redundant commit message at the end)
+    buildName="#${BUILD_BUILDID} • $sanitizedCommitMessage $(FULL_VERSION)"
+    echo "Computed build name: $buildName"
+    
+    # Update the build number
+    echo "##vso[build.updatebuildnumber]$buildName"
+  displayName: "Set Build Name"
+  env:
+    FULL_VERSION: $(FULL_VERSION)  # Pass FULL_VERSION as an environment variable
+
+
 - task: NodeTool@0
   inputs:
     versionSpec: '20.x'
