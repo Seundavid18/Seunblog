@@ -175,7 +175,7 @@ steps:
   displayName: 'Publish Artifacts'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'release'
+    ArtifactName: 'release-$(FULL_VERSION)'
     publishLocation: 'Container'
 - task: Npm@1
   displayName: Unit tests
