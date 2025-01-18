@@ -5,6 +5,7 @@
 
 trigger:
 - main
+- release
 
 pool:
   vmImage: ubuntu-latest
@@ -113,7 +114,6 @@ steps:
   displayName: "Set Build Name"
   env:
     FULL_VERSION: $(FULL_VERSION)  # Pass FULL_VERSION as an environment variable
-
 
 - task: NodeTool@0
   inputs:
